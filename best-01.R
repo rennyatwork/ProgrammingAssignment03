@@ -26,8 +26,7 @@ getMinDataSet <- function(pDataSet, pState, pOutcome)
   
   ## subset by state
   tempDs <- subset(pDataSet, pDataSet$State==pState &!is.na(pDataSet[,pOutcome]), c("Hospital.Name", "City", "State", pOutcome))
-  
-  #print("minDS")
+    
   #print(tempDs)
   
   #return(tempDs)
