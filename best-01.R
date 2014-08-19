@@ -53,17 +53,7 @@ isValidOutcome <-function(pOutcome)
 ## returns a dataset with min values per state
 ### texting example: minDs <- getMinDataSet(x, "TX", "heart attack")
 getMinDataSet <- function(pDataSet, pState, pOutcome)
-{
-  if(!isValidState(pState))
-  {
-    stop("Invalid State: ", call=TRUE)
-  }
-  
-  if(!isValidOutcome(pOutcome))
-  {
-    stop("Invalid Outcome: ", call=TRUE)
-  }
-  
+{  
   colOutcome <- as.character(getValidOutcomes()[pOutcome])
   print("colOutcome")
   print(colOutcome)
@@ -90,8 +80,19 @@ best <- function(pState, pOutcome) {
   ## Return hospital name in that state with lowest 30-day death
   ## rate
   
+  if(!isValidState(pState))
+  {
+    stop("invalid state")
+  }
+  
+  if(!isValidOutcome(pOutcome))
+  {
+    stop("invalid outcome")
+  }
+  
   colOutcome <- as.character(getValidOutcomes()[pOutcome])
   print("best")
   print(colOutcome)
-  return (subset( head( getMinDataSet(getFile(), pState, pOutcome),1), 1==1, c("Hospital.Name", colOutcome)))
+  #return (subset( head( getMinDataSet(getFile(), pState, pOutcome),1), 1==1, c("Hospital.Name", colOutcome)))
+  return (subset( head( getMinDataSet(getFile(), pState, pOutcome),1), 1==1, c("Hospital.Name")))
 }
