@@ -170,6 +170,8 @@ getDfHospitalName <- function(pDataset, pIndex)
   
   #print("pIndex")
   #print("dfHospital")
+  names(dfHospital)[1] <-"hospital"
+  names(dfHospital)[2] <-"state"
   return (dfHospital)
 }  
 
